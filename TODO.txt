@@ -4,15 +4,20 @@ testirati sa video fajlovima - radi ali koristit cemo scipy.io.wavfile.read
 
 
 
-f-ja za resample svega na 48k - testirati usput pisanje u wav file - nema smisla1
+f-ja za resample svega na 48k - testirati usput pisanje u wav file - nema smisla
+
+izbacene sve gluposti iz Signal.m - za portati cca 1100 linija matlab koda
 
 -------------iznad rijeseno---------------------
 
-nacrtat spektar, 
+compatibility test python i matlab Signal klase
 
-sa frekvencijama i vremenima
+Portat Signal.m - 
+ - wav I/O, STFT, iSTFT
 
-napraviti da se moze pisati u .png
+plotanje spektra u png i na ekran (zanemariti overlap)
+
+
 
 napraviti ponovno generiranje wav fajla iz TF zapisa
 
