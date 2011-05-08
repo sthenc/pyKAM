@@ -10,7 +10,7 @@ izbacene sve gluposti iz Signal.m - za portati cca 1100 linija matlab koda
 
 -------------iznad rijeseno---------------------
 
-compatibility test python i matlab Signal klase
+compatibility test python i matlab Signal klase - probat je li radi u octave xD...
 
 Portat Signal.m - 
  - wav I/O, STFT, iSTFT
