@@ -1,7 +1,13 @@
 
 ucitat wav file
+testirati sa video fajlovima - radi ali koristit cemo scipy.io.wavfile.read
+
+-------------iznad rijeseno---------------------
+
+f-ja za resample svega na 48k - testirati usput pisanje u wav file
 
 nacrtat spektar, 
+
 sa frekvencijama i vremenima
 
 napraviti da se moze pisati u .png

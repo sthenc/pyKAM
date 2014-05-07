@@ -26,6 +26,7 @@
 #print(ar[0])
 #indf.close()
 
+import math as m
 import numpy as np
 import scipy.io.wavfile as wav
 from scipy.interpolate import interp1d
@@ -33,21 +34,49 @@ from scipy.interpolate import interp1d
 
 sr, y = wav.read("../../data/stereo-blauen1.wav")
 
-ly = y.T[0]
-ry = y.T[1]
+
+sz = len(y)
+
+ly = y.T[0][0:sz]
+ry = y.T[1][0:sz]
 
 
-x = np.linspace(0, 10000, len(y))
+x = np.linspace(0, 10000, sz)
+
+print(len(x), len(ly))
+
 lf = interp1d(x, ly)
 rf = interp1d(x, ry)
 
-print("pocetak racunanja")
+
+
 sr2 = 96000
-ly2 = [lf(t) for t in np.linspace(0, 10000, len(y) * sr2/sr)]
-ry2 = [rf(t) for t in np.linspace(0, 10000, len(y) * sr2/sr)]
+sy2 = m.floor(sz * sr2/sr)
+print(len(y), sy2)
+ly2 = np.empty(sz * sr2/sr, np.int16)
+print(ly2)
+ry2 = np.empty(sz * sr2/sr, np.int16)
+print(ry2)
+#ly2 = [lf(t) for t in np.linspace(0, 10000, sz * sr2/sr)]
+#ry2 = [rf(t) for t in np.linspace(0, 10000, sz * sr2/sr)]
 
+#for i in range(0, len(ly2)):
+#	ly2[i] = int(round(float(ly2[i])));
+#	ry2[i] = int(round(float(ry2[i])));
 
-y2 = array([ly2,ry2]).T
+domena = np.linspace(0, 10000, sy2)
+print(domena)
+for i in range(0, sy2):
+	ly2[i] = np.int16(round(float(lf(domena[i]))))
+	ry2[i] = np.int16(round(float(rf(domena[i]))))
+	if (i % 10000 == 0):
+		print (i/10000, '/', sy2/10000)
+
+y2 = np.array([ly2,ry2]).T
+
+print(y)
+
+print(y2)
 
 wav.write("./stereo-resampled.wav", sr2, y2)
 
