@@ -41,7 +41,7 @@ class Signal:
         self.fs = 44100
         self.sLength = 0
         self.nChans = 0
-        self.weightingFunction = np.hamming #FIXME
+        self.weightingFunction = np.hamming
         
         #STFT properties
         self.S = np.array([])
@@ -72,3 +72,28 @@ class Signal:
             self.LoadWF(args(0), args(1))
 
 
+# Properties and constraints definitions
+
+singlePrecision
+
+s 
+
+fs
+
+windowLength
+
+nfft
+
+overlapRatio
+
+    def set_S(self, value):
+        self._S = value
+
+    def get_S(self):
+        return self._S
+    
+    S = property(get_S, set_S)
+    
+weightingFunction - evaluate weightingWindow
+
+# TODO something for handling windowfunctions that take both nfft and overlapRatio as input

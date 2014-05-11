@@ -20,6 +20,8 @@ Portat Signal.m -
 -------------iznad rijeseno---------------------
 
  -portat property listeners, split, STFT, iSTFT
+- single precision using np.float32
+- probat np.float16 muahaha
 
 plotanje spektra u png i na ekran (zanemariti overlap)
 
