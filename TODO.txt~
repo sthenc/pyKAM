@@ -12,14 +12,12 @@ izbacene sve gluposti iz Signal.m - za portati cca 1100 linija matlab koda
 compatibility test python i matlab Signal klase 
 - probat je li radi u octave - ne radi naravno OO nedostaje
 
-- loadanje podataka iz .mat spremljenih fajlova
+-------------iznad rijeseno---------------------
+
 -napraviti komparator izmedju python i matlab verzije
 
 Portat Signal.m - 
- - wav I/O,
--------------iznad rijeseno---------------------
-
- -portat STFT, iSTFT
+ - wav I/O, STFT, iSTFT
 
 plotanje spektra u png i na ekran (zanemariti overlap)
 
