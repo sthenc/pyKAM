@@ -18,52 +18,53 @@
 ################################################################################
 
 import scipy.io.wavfile as wav
+import numpy as np
 import copy
 
 class Signal:
 
     # Data loaders
     def LoadFromFile(self, file):
-        self.fs, self.s = wav.read(file);
-        self.sLength, self.nChans = self.s.shape;
+        self.fs, self.s = wav.read(file)
+        self.sLength, self.nChans = self.s.shape
 
     def LoadWF(self, waveform, fs):
-        self.s = waveform;
-        self.fs = fs;
-        self.sLength, self.nChans = self.s.shape;
+        self.s = waveform
+        self.fs = fs
+        self.sLength, self.nChans = self.s.shape
     
     def __init__(self, *args):
         
         #signal properties
-        self.singlePrecision = 0;
-        self.s = [];
-        self.fs = 44100;
-        self.sLength = 0;
-        self.nChans = 0;
-      #  self.weightingFunction = @hamming; FIXME
+        self.singlePrecision = 0
+        self.s = np.array([])
+        self.fs = 44100
+        self.sLength = 0
+        self.nChans = 0
+        self.weightingFunction = np.hamming #FIXME
         
         #STFT properties
-        self.S = [];
-        self.windowLength = 60;
-        self.nfft = 0;
-        self.nfftUtil = 0;
-        self.overlapRatio = 0.5;
-        self.framesPositions = [];
-        self.nFrames = 0;
-        self.weightingWindow = [];
-        self.overlap = 0;
+        self.S = np.array([])
+        self.windowLength = 60
+        self.nfft = 0
+        self.nfftUtil = 0
+        self.overlapRatio = 0.5
+        self.framesPositions = np.array([])
+        self.nFrames = 0
+        self.weightingWindow = np.array([])
+        self.overlap = 0
         
 
         # Windowing properties
-        self.sWin = [];
-        self.sWeights = [];
-        self.sWin = [];
-        self.sWeights = [];
+        self.sWin = np.array([])
+        self.sWeights = np.array([])
+        self.sWin = np.array([])
+        self.sWeights = np.array([])
         
         
         if len(args) == 1:
             if type(args[0]) == type(''): # it's a filename
-                self.LoadFromFile(args[0]);
+                self.LoadFromFile(args[0])
             elif type(args[0] == type(self)): # copy data from other signal
                 self.__dict__ = copy.deepcopy(args[0].__dict__)
                     

@@ -19,7 +19,7 @@ Portat Signal.m -
  - wav I/O,
 -------------iznad rijeseno---------------------
 
- -portat STFT, iSTFT
+ -portat property listeners, split, STFT, iSTFT
 
 plotanje spektra u png i na ekran (zanemariti overlap)
 
