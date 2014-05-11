@@ -33,24 +33,6 @@ class Signal:
         self.sLength, self.nChans = self.s.shape;
     
     def __init__(self, *args):
-        #signal properties
-        self.singlePrecision = 0;
-        self.s = [];
-        self.fs = 44100;
-        self.sLength = 0;
-        self.nChans = 0;
-      #  self.weightingFunction = @hamming; FIXME
-        
-        #STFT properties
-        self.S = [];
-        self.windowLength = 60;
-        self.nfft = 0;
-        self.nfftUtil = 0;
-        self.overlapRatio = 0.5;
-        self.framesPositions = [];
-        self.nFrames = 0;
-        self.weightingWindow = [];
-        self.overlap = 0;
         
         #signal properties
         self.singlePrecision = 0;
@@ -80,9 +62,9 @@ class Signal:
         
         
         if len(args) == 1:
-            if type(args[0]) == type(''): # it-s a filename
+            if type(args[0]) == type(''): # it's a filename
                 self.LoadFromFile(args[0]);
-            elif type(args[0] == type(self)):
+            elif type(args[0] == type(self)): # copy data from other signal
                 self.__dict__ = copy.deepcopy(args[0].__dict__)
                     
         elif len(args) == 2: # args[0] is a signal, args[1] is sample freq.
