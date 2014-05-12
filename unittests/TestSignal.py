@@ -27,3 +27,11 @@ import unittest
 
 class TestSignal(unittest.TestCase):
 
+    def setUp(self):
+        self.sig = Signal('../data/donau_waltz_short.wav')
+
+#    def 
+
+if __name__ == "__main__":
+    unittest.main()
+

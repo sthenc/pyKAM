@@ -184,5 +184,7 @@ class Signal:
 
 if __name__ == "__main__":
     a = Signal("../matKAM/data/britney-short.wav")
-    fs, ar = wav.read("../matKAM/data/britney-short2.wav")
+    #fs, ar = wav.read("../matKAM/data/britney-short2.wav")
+    
+    a.print_state()
 
