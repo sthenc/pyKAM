@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 ################################################################################
 #
@@ -36,30 +37,29 @@ class Signal:
     def __init__(self, *args):
         
         #signal properties
-        self.singlePrecision = 0
-        self.s = np.array([])
+        self.precision = 64
+        self.s = np.array([], np.float64)
         self.fs = 44100
         self.sLength = 0
         self.nChans = 0
         self.weightingFunction = np.hamming
         
         #STFT properties
-        self.S = np.array([])
+        self.S = np.array([], np.float64)
         self.windowLength = 60
         self.nfft = 0
         self.nfftUtil = 0
         self.overlapRatio = 0.5
-        self.framesPositions = np.array([])
+        self.framesPositions = np.array([], np.float64)
         self.nFrames = 0
-        self.weightingWindow = np.array([])
+        self.weightingWindow = np.array([], np.float64)
         self.overlap = 0
-        
 
         # Windowing properties
-        self.sWin = np.array([])
-        self.sWeights = np.array([])
-        self.sWin = np.array([])
-        self.sWeights = np.array([])
+        self.sWin = np.array([], np.float64)
+        self.sWeights = np.array([], np.float64)
+        self.sWin = np.array([], np.float64)
+        self.sWeights = np.array([], np.float64)
         
         
         if len(args) == 1:
@@ -71,20 +71,42 @@ class Signal:
         elif len(args) == 2: # args[0] is a signal, args[1] is sample freq.
             self.LoadWF(args(0), args(1))
 
+    def cast_precision(self, val):
+        if self._precision == 16:
+            return np.float16(val)
+        elif self._precision == 32:
+            return np.float32(val)
+        else:
+            return np.float64(val)
 
 # Properties and constraints definitions
+   
 
-singlePrecision
+    def set_precision(self, val): # have to change everything, unlike matlab, python
+                                    # uses greater precision by default
 
-s 
+        if not ('_precision' in self.__dict__):
+            self._precision = val
+    	
+        if self._precision != val:
+            self._precision = val
+            for k in self.__dict__:
+                if k != 'weightingFunction':
+                    self.__dict__[k] = self.cast_precision(self.__dict__[k])
+            
+    def get_precision(self):
+	    return self._precision
+		
+    precision = property(get_precision, set_precision)
+#s 
 
-fs
+#fs
 
-windowLength
+#windowLength
 
-nfft
+#nfft
 
-overlapRatio
+#overlapRatio
 
     def set_S(self, value):
         self._S = value
@@ -94,6 +116,7 @@ overlapRatio
     
     S = property(get_S, set_S)
     
-weightingFunction - evaluate weightingWindow
+#weightingFunction - evaluate weightingWindow
 
 # TODO something for handling windowfunctions that take both nfft and overlapRatio as input
+
