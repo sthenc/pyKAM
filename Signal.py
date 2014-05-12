@@ -133,3 +133,4 @@ class Signal:
 # TODO something for handling windowfunctions that take both nfft and overlapRatio as input
 
 a = Signal("./stereo-resampled.wav")
+
