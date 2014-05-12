@@ -45,33 +45,29 @@ class Signal:
             self.LoadWF(args(0), args(1))
 
     def cast_precision(self, val):
-        if self._precision == 16:
-            return np.float16(val)
-        elif self._precision == 32:
-            return np.float32(val)
+        if self._precision == 32:
+            return np.complex64(val)
         else:
-            return np.float64(val)
+            return np.complex128(val) # or just np.complex()
             
 #BEGIN Properties and constraints definitions
 
     # Signal properties
     _precision = 64
     
-    def set_precision(self, val): # FIXME don't have to cast everything
-
+    def set_precision(self, val):
+        #print('set_precision')
         if not ('_precision' in self.__dict__):
-            self._precision = val
-    	
+            self._precision = 0
+            
         if self._precision != val:
             self._precision = val
-            for k in self.__dict__:
-                if type(self.__dict__[k]) != type(int):  # FIXME this seems unnecessary, np.arrays keep their type
-                    if k != 'weightingFunction':
-                        self.__dict__[k] = self.cast_precision(self.__dict__[k])
+            self._s = self.cast_precision(self.s)
+            self._S = self.cast_precision(self.S)
             
     def get_precision(self):
-	    return self._precision
-		
+        return self._precision
+
     precision = property(get_precision, set_precision)
 
     _s = np.array([[0,0],[0,0]], np.float64) 
