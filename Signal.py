@@ -82,8 +82,7 @@ class Signal:
    
 
     def set_precision(self, val): # have to change everything, unlike matlab, python
-                                    # uses greater precision by default
-
+                                    # uses greater precision by defaul
         if not ('_precision' in self.__dict__):
             self._precision = val
     	
@@ -98,6 +97,20 @@ class Signal:
 		
     precision = property(get_precision, set_precision)
 #s 
+
+
+    def set_s(self, val):
+        if type(val) != type(np.array([])) or len(val.shape) != 2:
+            print('s needs to be 2D ', type(np.array([])))
+            print('but is ', type(val), 'shape = ', val.shape)
+            exit()
+        _s = s
+        #ssLenght, 
+        
+    def get_s(self):
+        return _s
+        
+    s = property(get_s, set_s)
 
 #fs
 
@@ -118,3 +131,5 @@ class Signal:
 #weightingFunction - evaluate weightingWindow
 
 # TODO something for handling windowfunctions that take both nfft and overlapRatio as input
+
+a = Signal("./stereo-resampled.wav")
