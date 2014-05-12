@@ -70,30 +70,29 @@ class Signal:
         elif len(args) == 2: # args[0] is a signal, args[1] is sample freq.
             self.LoadWF(args(0), args(1))
 
+    def cast_precision(self, val):
+        if self._precision == 16:
+            return np.float16(val)
+        elif self._precision == 32:
+            return np.float32(val)
+        else:
+            return np.float64(val)
 
 # Properties and constraints definitions
-        
+   
 
-    def set_precision(self, val):
+    def set_precision(self, val): # have to change everything, unlike matlab, python
+                                    # uses greater precision by default
 
         if not ('_precision' in self.__dict__):
             self._precision = val
     	
         if self._precision != val:
             self._precision = val
-            if (val == 32):
-                for k in self.__dict__:
-                    if k != 'weightingFunction':
-                        self.__dict__[k] = np.float32(self.__dict__[k])
-            elif (val == 16):
-                for k in self.__dict__:
-                    if k != 'weightingFunction':
-                        self.__dict__[k] = np.float16(self.__dict__[k])
-            else:
-                for k in self.__dict__:
-                    if k != 'weightingFunction':
-                        self.__dict__[k] = np.float64(self.__dict__[k])
-	
+            for k in self.__dict__:
+                if k != 'weightingFunction':
+                    self.__dict__[k] = self.cast_precision(self.__dict__[k])
+            
     def get_precision(self):
 	    return self._precision
 		
