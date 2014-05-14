@@ -16,12 +16,15 @@ compatibility test python i matlab Signal klase
 -napraviti komparator izmedju python i matlab verzije
 
 Portat Signal.m - 
- - wav I/O,
+ - wav I/O, property listeners,
+ 
+ - probat np.float16 muahaha - nefunkcionalno, raspon samo cca +- 10000
+ - single precision using np.float32 - complex???
 -------------iznad rijeseno---------------------
 
- -portat property listeners, split, STFT, iSTFT
-- single precision using np.float32
-- probat np.float16 muahaha
+- ponovno generirat testove
+- unittest za property listeners
+- split, STFT, iSTFT
 
 plotanje spektra u png i na ekran (zanemariti overlap)
 
