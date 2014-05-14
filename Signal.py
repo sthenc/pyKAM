@@ -19,8 +19,10 @@
 
 import scipy.io.wavfile as wav
 import numpy as np
+import scipy.fftpack as sf
 import copy
 from pprint import pprint
+import math as m
 
 class Signal:
 
@@ -89,7 +91,7 @@ class Signal:
            
     sLength = 0
     nChans = 0
-    weightingFunction = np.hamming
+    weightingFunction = lambda(x,y) { np.hamming
         
     _fs = 44100
 
@@ -127,6 +129,7 @@ class Signal:
         self._nfft = round(self.fs * self.windowLength / 1000)
         self._nfftUtil = round(self.nfft / 2)
         self._overlap = round(self.nfft * self.overlapRatio)
+       # TODO self.recomputeWeights()
         
     def get_windowLength(self):
         return self._windowLength
@@ -145,10 +148,10 @@ class Signal:
         
     nfft = property(get_nfft, set_nfft)
     
-    _overlapRatio = 0.5 # XXX overlap isn't really used AFAIK
+    _overlapRatio = 0.5 
     
     def set_overlapRatio(self, val):
-        self._overlapRatio = cast_precision(val)
+        self._overlapRatio = np.float64(val)
         
     def get_overlapRatio(self):
         return self._overlapRatio
@@ -164,9 +167,35 @@ class Signal:
     sWin = np.array([], np.float64) 
     sWeights = np.array([], np.float64)
 
-#weightingFunction - evaluate weightingWindow
+#    def recomputeWeights():
+        
+
+#TODO weightingFunction - evaluate weightingWindow
+
+
 
 #END Properties and constraints definitions    
+
+#XXX heavy lifting
+
+    def STFT(self):
+        self.windowWeights = self.weightingFunction(self.windowLength)
+        step = self.nfft - self.overlap
+        pos = 0
+        self.nFrames = m.ceil(sLength / step)
+        
+        self.S = np.array(self.nfft, self.nFrames, self.nChans)
+
+
+        for c in range(0, self.nChans):
+            for f in range(0, self.nFrames):
+                tmp = s[f * step : f * step + self.windowLength, c]
+                
+                
+                tmp = sf.fft(tmp * self.windowWeights)
+                S[:, f, c] = tmp
+
+
 
 # DEBUG 
     def print_state(self):
@@ -179,8 +208,9 @@ class Signal:
 # TODO something for handling windowfunctions that take both nfft and overlapRatio as input
 
 if __name__ == "__main__":
-    a = Signal("../matKAM/data/britney-short.wav")
+    a = Signal("./data/britney-short0.wav")
     #fs, ar = wav.read("../matKAM/data/britney-short2.wav")
-    
+    a.windowLength = 50
+    a.overlapRatio = 0.85    
     a.print_state()
 
