@@ -1,0 +1,28 @@
+Seminar
+
+prvo opis kako problem radi kod covjeka,
+
+puznica i rastavljanje na frekvencije, Bekesy i rezanje macaka
+inhibicija, selektivno slusanje, prepoznavanje boje zvuka,
+nemogucnost razlikovanja tj. razdvajanja bliskih tonova
+uloga predvidjanja u interpretaciji zvuka - poveznica sa markovljevim modelima
+zvucno pamcenje - oko 45 sekundi, provjeriti tocno
+raspon ljudskog sluha
+kolika razlika u snazi je potrebna da jedan zvuk maskira drugi
+
+CASA - prepoznavanje 'objekata' u TF zapisu i njihovo grupiranje
+
+
+Razdvajanje zvučnog zapisa
+
+
+Uvod
+Razdvajanje zvukova kod čovjeka
+
+Svaki pametni inžinjer prije nego što pokuša sam riješiti problem, provjeriti
+će da li već postoji gotovo rješenje za dani problem, i onda ga pojednostaviti
+ili prilagoditi vlastitim potrebama. 
+
+Problem računalnog sluha, od kojega je razdvajanje zvučnog zapisa jedan manje
+komplicirani podproblem, još uvijek nije sasvim riješen. Zato ne treba čuditi
+što su se mnogi istraživači okrenuli  

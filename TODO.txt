@@ -33,18 +33,3 @@ postupno ubacivati modificiranje zapisa, prvo bi mogao filter nekakav
 
 nekako postepeno ukljuciti onaj algoritam eh...
 
-=======================================================
-
-krenut pisat seminar
-
-prvo opis kako problem radi kod covjeka,
-
-puznica i rastavljanje na frekvencije, Bekesy i rezanje macaka
-inhibicija, selektivno slusanje, prepoznavanje boje zvuka,
-nemogucnost razlikovanja tj. razdvajanja bliskih tonova
-uloga predvidjanja u interpretaciji zvuka - poveznica sa markovljevim modelima
-zvucno pamcenje - oko 45 sekundi, provjeriti tocno
-raspon ljudskog sluha
-kolika razlika u snazi je potrebna da jedan zvuk maskira drugi
-
-CASA - prepoznavanje 'objekata' u TF zapisu i njihovo grupiranje
