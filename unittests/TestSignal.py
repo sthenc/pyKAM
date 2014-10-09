@@ -20,7 +20,9 @@
 import sys
 import numpy as np
 
-sys.path.insert(0, '../')
+#sys.path.insert(0, '..\\')
+
+#print(sys.path)
 
 from Signal import Signal
 
@@ -29,13 +31,14 @@ import unittest
 class TestSignal(unittest.TestCase):
 
     def setUp(self):
-        self.sig = Signal('../data/britney-short0.wav')
+        self.sig = Signal('./data/britney-short0.wav')
 
     def test_precision(self):
         self.sig.precision = 32
         
         self.assertEqual(type(self.sig.s[0][0]), type(np.complex64(1.0)));
         
+		
         self.sig.precision = 64
         self.assertEqual(type(self.sig.S[0][0][0]), type(np.complex128(1.0)));
 
