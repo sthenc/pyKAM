@@ -20,18 +20,19 @@ Portat Signal.m -
  
  - probat np.float16 muahaha - nefunkcionalno, raspon samo cca +- 10000
  - single precision using np.float32 - complex???
--------------iznad rijeseno---------------------
 
-- ponovno generirat testove -- ??
+ - ponovno generirat testove -- neznam kaj sam mislio
+ - unittest za property listeners -- preskočeno
+- split - izbacen
+ 
+ -------------iznad rijeseno---------------------
 
-- unittest za property listeners
-- split, STFT, iSTFT
+- STFT - napisan-testirat, iSTFT 
 
 plotanje spektra u png i na ekran (zanemariti overlap)
 
-
-
 napraviti ponovno generiranje wav fajla iz TF zapisa
+
 
 postupno ubacivati modificiranje zapisa, prvo bi mogao filter nekakav
 
